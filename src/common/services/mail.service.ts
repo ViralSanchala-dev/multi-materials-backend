@@ -1,7 +1,7 @@
 import { ConfigService } from '@nestjs/config';
 import * as nodemailer from 'nodemailer';
 import Mail from 'nodemailer/lib/mailer';
-import { SendMailDto } from 'src/admin/authentication/dtos/send-mail.dto';
+import { SendMailDto } from 'src/api/authentication/dtos/send-mail.dto';
 export class MailService {
 
     private configService: ConfigService;

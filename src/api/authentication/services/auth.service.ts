@@ -2,15 +2,15 @@ import { BadRequestException, HttpException, HttpStatus, Injectable, NotFoundExc
 import { SignupDto } from "../dtos/signup.dto";
 import { InjectModel } from "@nestjs/mongoose";
 import { Model } from "mongoose";
-import { User } from "src/admin/authentication/schemas/user.schema";
+import { User } from "src/api/authentication/schemas/user.schema";
 import * as bcrypt from "bcrypt";
 import { LoginDto } from "../dtos/login.dto";
 import { JwtService } from "@nestjs/jwt";
-import { RefreshToken } from "src/admin/authentication/schemas/refresh-token.schema";
+import { RefreshToken } from "src/api/authentication/schemas/refresh-token.schema";
 import { v4 as uuidv4 } from "uuid";
 import { ChangePasswordDto } from "../dtos/change-password.dto";
 import { ForgotPasswordDto } from "../dtos/forgot-password.dto";
-import { Otp } from "src/admin/authentication/schemas/otp.schema";
+import { Otp } from "src/api/authentication/schemas/otp.schema";
 import { UpdateUserDto } from "../dtos/update-user.dto";
 
 @Injectable()
