@@ -2,7 +2,7 @@ import { Schema, Prop, SchemaFactory } from '@nestjs/mongoose';
 import { Document, Schema as MongooseSchema } from 'mongoose';
 import { PaymentStatus } from 'src/constant/status.constant';
 
-@Schema({ timestamps: true })
+@Schema({ timestamps: true, versionKey: false })
 export class DevWork extends Document {
     @Prop({ required: true, type: MongooseSchema.Types.ObjectId })
     userId: MongooseSchema.Types.ObjectId;
@@ -53,6 +53,9 @@ export class DevWork extends Document {
 
     @Prop({ trim: true })
     note: string;
+
+    @Prop({ type: [String], default: [] })
+    files: string[];
 }
 
 export const DevWorkSchema = SchemaFactory.createForClass(DevWork);

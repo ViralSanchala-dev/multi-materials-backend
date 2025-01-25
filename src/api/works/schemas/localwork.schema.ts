@@ -1,7 +1,8 @@
 import { Schema, Prop, SchemaFactory } from '@nestjs/mongoose';
 import { Document, Schema as MongooseSchema } from 'mongoose';
+import { PaymentStatus } from 'src/constant/status.constant';
 
-@Schema({ timestamps: true })
+@Schema({ timestamps: true, versionKey: false })
 export class LocalWork extends Document {
     @Prop({ required: true, type: MongooseSchema.Types.ObjectId })
     userId: MongooseSchema.Types.ObjectId;
@@ -33,14 +34,17 @@ export class LocalWork extends Document {
     @Prop({ required: true })
     total: number;
 
-    @Prop({ required: true, enum: ['pending', 'paid'] })
+    @Prop({ required: true, enum: PaymentStatus })
     pickPartyBillStatus: string;
 
-    @Prop({ required: true, enum: ['pending', 'paid'] })
+    @Prop({ required: true, enum: PaymentStatus })
     dropPartyBillStatus: string;
 
     @Prop({ trim: true })
     note: string;
+
+    @Prop({ type: [String], default: [] })
+    files: string[];
 }
 
 export const LocalWorkSchema = SchemaFactory.createForClass(LocalWork);

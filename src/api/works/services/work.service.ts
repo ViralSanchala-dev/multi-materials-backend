@@ -85,8 +85,11 @@ export class WorkService {
                 default:
                     throw new HttpException('Invalid work type', HttpStatus.BAD_REQUEST);
             }
+            console.log("000000000000000000000", data);
+            
             const work = new model(data);
-            const addWork = work.save();
+            const addWork = await work.save();
+            
             if (addWork) {
                 return {
                     "status": "success",
